@@ -1,0 +1,6 @@
+[submodule "thundershare"]
+	path = thundershare
+	url = git@github.com:loic-lescoat/thundershare.git
+[submodule "linedance-tracker"]
+	path = linedance-tracker
+	url = git@github.com:loic-lescoat/linedance-tracker.git
