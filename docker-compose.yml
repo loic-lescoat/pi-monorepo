@@ -1,6 +1,7 @@
 
 services:
   nginx:
+    restart: always
     image: nginx:latest
     ports:
       - 80:80
@@ -17,7 +18,7 @@ services:
       args:
         PORT: 8001
     container_name: linedance-tracker
-    # restart: always
+    restart: always
     ports:
       - 8001:8001
     working_dir: /deploy
@@ -29,7 +30,7 @@ services:
       args:
         PORT: 8000
     container_name: thundershare
-      # restart: always
+    restart: always
     ports:
       - 8000:8000
     working_dir: /deploy
