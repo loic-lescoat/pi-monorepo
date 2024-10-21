@@ -1,0 +1,26 @@
+As suggested by ChatGPT:
+
+<ol>
+	<li>
+		Inspect eth0 and wlan0: <code>ifconfig</code>.
+		See wlan0 is RUNNING and eth0 is not
+	</li>
+	<li>
+		Edit <code>/etc/netplan/*.yml</code> to have the following:
+<pre>
+network:
+    version: 2
+    ethernets:
+      renderer: networkd
+      eth0:
+        dhcp4: true
+		</pre>
+	</li>
+	<li>
+		Apply: <code>sudo netplan apply</code>
+	</li>
+	<li>
+		Inspect eth0 and wlan0: <code>ifconfig</code>.
+		See eth0 is RUNNING and wlan0 is not
+	</li>
+</ol>

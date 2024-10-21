@@ -4,12 +4,13 @@ services:
     image: nginx:latest
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./nginx/index.html:/usr/share/nginx/html/index.html
       - ./blog:/usr/share/nginx/html/blog
-    configs:
-      - source: nginx_conf
-        target: /etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /home/loic/apps/ssl/fullchain.pem:/ssl/fullchain.pem # TODO don't hardcode
+      - /home/loic/apps/ssl/privkey.pem:/ssl/privkey.pem
   linedance-tracker:
     build:
       context: ./linedance-tracker
