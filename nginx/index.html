@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<!-- saved from url=(0026)https://loic.asuscomm.com/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>Loïc's page</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loïc's Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Loïc's page!</h1>
 
-    <h3>Links to sub-pages</h3>
-    <ul>
-	    <li>
-		    <a href="/linedance-tracker">Line-dance tracker</a>
-	    </li>
-	    <li>
-		    <a href="/blog">Blog</a>
-	    </li>
-	    <li>
-		    <a href="/thundershare">Thundershare</a>
-		    (not public)
-		    <a href="https://github.com/loic-lescoat/thundershare">
-			    source
-		    </a>
-	    </li>
-    </ul>
+<body class="bg-gray-100 text-gray-800">
 
+    <header class="text-center py-6 bg-blue-600 text-white">
+        <h1 class="text-4xl font-bold">Loïc's Page!</h1>
+    </header>
 
-</body></html>
+    <main class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-4">Sub-Pages</h3>
+        <ul class="space-y-4">
+            <li class="border-b border-gray-500 pb-2">
+                <a href="/linedance-tracker" class="text-blue-600 hover:underline font-medium">Line-dance tracker</a>
+            <li class="border-b border-gray-500 pb-2">
+                <div class="flex items-center space-x-2">
+                    <a href="/thundershare" class="text-blue-600 hover:underline font-medium">Thundershare</a>
+                    <span class="text-sm text-gray-500">(not public)</span>
+                    <a href="https://github.com/loic-lescoat/thundershare" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        <i>source</i>
+                    </a>
+                </div>
+            </li>
+            </li>
+            <li class="border-b border-gray-500 pb-2">
+                <a href="/blog" class="text-blue-600 hover:underline font-medium">Blog</a>
+            </li>
+        </ul>
+    </main>
+
+</body>
+
+</html>
+
