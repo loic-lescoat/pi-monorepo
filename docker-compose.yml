@@ -36,6 +36,16 @@ services:
     working_dir: /deploy
     volumes:
       - thundershare-volume:/deploy/storage
+  youtube-to-mp3:
+    build:
+      context: ./youtube-to-mp3
+      args:
+        PORT: 8002
+    container_name: youtube-to-mp3
+    restart: always
+    ports:
+      - 8002:8002
+    working_dir: /deploy
 
 
 volumes:
