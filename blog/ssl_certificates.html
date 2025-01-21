@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL Certificate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="text-center py-6 bg-blue-600 text-white">
+        <h1 class="text-4xl font-bold">Install SSL Certificate using Let's Encrypt</h1>
+    </header>
+
+    <main class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+<h2 class="text-2xl font-semibold mb-4">
+    As seen in 
+    <a href="https://www.youtube.com/watch?v=XxMbLr4ytCM" class="text-blue-500 underline">tutorial</a>:
+</h2>
+
+
+	<p>
+	</p>
+<ol class="list-decimal ml-6 space-y-4 text-gray-700">
+    <li>Go to <a href="https://github.com/acmesh-official/acme.sh" class="text-blue-500 underline">ACME Github repo</a></li>
+    <li>Download ACME install script and run it. This creates <code class="text-sm bg-gray-200 p-1 rounded">acme.sh</code></li>
+    <li><code class="text-sm bg-gray-200 p-1 rounded">mkdir ~/pub && cd ~/pub && python3 -m http.server 80</code></li>
+    <li>Run <code class="text-sm bg-gray-200 p-1 rounded">./acme.sh --issue -d loic.lescoat.me -d www.loic.lescoat.me -w ~/pub/ --server letsencrypt</code>; replace the <code class="text-sm bg-gray-200 p-1 rounded">-d</code> arguments as required</li>
+    <li>Stop HTTP server</li>
+    <li>In <code class="text-sm bg-gray-200 p-1 rounded">nginx</code>, pass <code class="text-sm bg-gray-200 p-1 rounded">acme</code>'s <code class="text-sm bg-gray-200 p-1 rounded">full-chain cert</code> (full-chain certificate) to <code class="text-sm bg-gray-200 p-1 rounded">ssl_certificate</code> and the <code class="text-sm bg-gray-200 p-1 rounded">cert key</code> (private key) to <code class="text-sm bg-gray-200 p-1 rounded">ssl_certificate_key</code>:
+        <pre class="bg-gray-100 p-4 rounded border mt-2">
+server {
+    listen 0.0.0.0:443 ssl;
+    listen [::]:443 ssl;
+
+    ssl_certificate /path/to/fullchain.cer;
+    ssl_certificate_key /path/to/loic.lescoat.me.key;
+    ...
+}
+        </pre>
+    </li>
+</ol>
+
+    </main>
+
+</body>
+
+</html>
