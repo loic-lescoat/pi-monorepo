@@ -5,6 +5,8 @@ services:
       - my_network
     restart: always
     image: nginx:latest
+    environment:
+      - TZ=America/Los_Angeles
     ports:
       - 80:80
       - 443:443
