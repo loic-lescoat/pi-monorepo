@@ -1,6 +1,7 @@
 # What?
 
-Monorepo for apps on raspberry pi
+Monorepo for apps deployed on raspberry pi
+at https://loic.lescoat.me 🚀
 
 # Requirements
 
