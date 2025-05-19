@@ -11,12 +11,12 @@
 <body class="bg-gray-100 text-gray-800">
 
     <header class="text-center py-6 bg-blue-600 text-white">
-        <h1 class="text-4xl font-bold">Install SSL Certificate using Let's Encrypt</h1>
+        <h1 class="text-4xl font-bold">Install SSL Certificate Using Let's Encrypt</h1>
     </header>
 
     <main class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
 <h2 class="text-2xl font-semibold mb-4">
-    As seen in 
+    Install certificate as seen in 
     <a href="https://www.youtube.com/watch?v=XxMbLr4ytCM" class="text-blue-500 underline">tutorial</a>:
 </h2>
 
@@ -42,6 +42,28 @@ server {
         </pre>
     </li>
 </ol>
+
+<br>
+
+<h2 class="text-2xl font-semibold mb-4">
+  Bonus: renew SSL certificate
+</h2>
+
+<p>
+By default: <code>acme</code> auto-renews the certificate using a cron job.
+If this fails, renew it manually using:
+</p>
+<pre class="bg-gray-100 p-4 rounded border mt-2">
+DIR=/some_path/
+cd $DIR/pub
+python3 -m http.server 80
+
+# in another terminal
+cd $DIR/tmp
+PATH_TO_ACME_SH=$HOME/.acme.sh/.acme.sh
+$PATH_TO_ACME_SH --cron --home $(basename $PATH_TO_ACME_SH)
+</pre>
+
 
     </main>
 
