@@ -26,12 +26,28 @@
 <ol class="list-decimal ml-6 space-y-4 text-gray-700">
     <li>Go to <a href="https://github.com/acmesh-official/acme.sh" class="text-blue-500 underline">ACME Github repo</a></li>
     <li>Download ACME install script and run it. This creates <code class="text-sm bg-gray-200 p-1 rounded">acme.sh</code></li>
-    <li><code class="text-sm bg-gray-200 p-1 rounded">mkdir ~/pub && cd ~/pub && python3 -m http.server 80</code></li>
+    <li><code class="text-sm bg-gray-200 p-1 rounded">mkdir ~/pub && cd ~/pub && python3 -m http.server 8000</code></li>
+    <li>
+	    In <code class="text-sm bg-gray-200 p-1 rounded">~/pub/</code>: put the following into <code class="text-sm bg-gray-200 p-1 rounded">nginx.conf</code>:
+	    <pre class="bg-gray-100 p-4 rounded border mt-2">server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://172.17.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+	    </pre>
+	    then run:
+	    <code class="text-sm bg-gray-200 p-1 rounded">docker run -p 80:80   -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf:ro nginx</code>
+    </li>
     <li>Run <code class="text-sm bg-gray-200 p-1 rounded">./acme.sh --issue -d loic.lescoat.me -d www.loic.lescoat.me -w ~/pub/ --server letsencrypt</code>; replace the <code class="text-sm bg-gray-200 p-1 rounded">-d</code> arguments as required</li>
     <li>Stop HTTP server</li>
     <li>In <code class="text-sm bg-gray-200 p-1 rounded">nginx</code>, pass <code class="text-sm bg-gray-200 p-1 rounded">acme</code>'s <code class="text-sm bg-gray-200 p-1 rounded">full-chain cert</code> (full-chain certificate) to <code class="text-sm bg-gray-200 p-1 rounded">ssl_certificate</code> and the <code class="text-sm bg-gray-200 p-1 rounded">cert key</code> (private key) to <code class="text-sm bg-gray-200 p-1 rounded">ssl_certificate_key</code>:
-        <pre class="bg-gray-100 p-4 rounded border mt-2">
-server {
+        <pre class="bg-gray-100 p-4 rounded border mt-2">server {
     listen 0.0.0.0:443 ssl;
     listen [::]:443 ssl;
 
@@ -45,24 +61,6 @@ server {
 
 <br>
 
-<h2 class="text-2xl font-semibold mb-4">
-  Bonus: renew SSL certificate
-</h2>
-
-<p>
-By default: <code>acme</code> auto-renews the certificate using a cron job.
-If this fails, renew it manually using:
-</p>
-<pre class="bg-gray-100 p-4 rounded border mt-2">
-DIR=/some_path/
-cd $DIR/pub
-python3 -m http.server 80
-
-# in another terminal
-cd $DIR/tmp
-PATH_TO_ACME_SH=$HOME/.acme.sh/.acme.sh
-$PATH_TO_ACME_SH --cron --home $(basename $PATH_TO_ACME_SH)
-</pre>
 
 
     </main>
