@@ -3,7 +3,6 @@ services:
   nginx:
     networks:
       - my_network
-    restart: always
     image: nginx:latest
     environment:
       - TZ=America/Los_Angeles
@@ -16,6 +15,19 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/fullchain.cer:/ssl/fullchain.pem # TODO don't hardcode
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/loic.lescoat.me.key:/ssl/privkey.pem
+  linedance_database:
+    hostname: linedance_database
+    networks:
+      - my_network
+    image: 'postgres:16'
+    ports:
+      - "5432:5432" # makes db visible on network
+    environment:
+      - POSTGRES_PASSWORD=some_password # NOTE: should have something better
+    volumes:
+      - linedance_database_data:/var/lib/postgresql/data
+      - ./linedance_database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    
   linedance-tracker:
     networks:
       - my_network
@@ -23,8 +35,12 @@ services:
       context: ./linedance-tracker
       args:
         PORT: 8001
-    container_name: linedance-tracker
-    restart: always
+    depends_on:
+      - linedance_database
+    environment:
+      - PGPASSWORD=some_password # NOTE: must match above
+      - POSTGRES_HOST=linedance_database
+      - POSTGRES_USER=postgres
     ports:
       - 8001:8001
     working_dir: /deploy
@@ -37,8 +53,6 @@ services:
       context: ./thundershare
       args:
         PORT: 8000
-    container_name: thundershare
-    restart: always
     ports:
       - 8000:8000
     working_dir: /deploy
@@ -52,7 +66,6 @@ services:
       args:
         PORT: 8002
     container_name: youtube-to-mp3
-    restart: always
     ports:
       - 8002:8002
     working_dir: /deploy
@@ -64,6 +77,7 @@ networks:
 volumes:
   thundershare-volume:
   linedance-tracker-volume:
+  linedance_database_data:
 
 configs:
   nginx_conf:
