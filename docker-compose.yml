@@ -15,6 +15,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/fullchain.cer:/ssl/fullchain.pem # TODO don't hardcode
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/loic.lescoat.me.key:/ssl/privkey.pem
+    restart: unless-stopped
   linedance_database:
     hostname: linedance_database
     networks:
@@ -27,7 +28,7 @@ services:
     volumes:
       - linedance_database_data:/var/lib/postgresql/data
       - ./linedance_database/init.sql:/docker-entrypoint-initdb.d/init.sql
-    
+    restart: unless-stopped
   linedance-tracker:
     networks:
       - my_network
@@ -46,6 +47,7 @@ services:
     working_dir: /deploy
     volumes:
       - linedance-tracker-volume:/deploy/storage
+    restart: unless-stopped
   thundershare:
     networks:
       - my_network
@@ -58,6 +60,7 @@ services:
     working_dir: /deploy
     volumes:
       - thundershare-volume:/deploy/storage
+    restart: unless-stopped
   youtube-to-mp3:
     networks:
       - my_network
@@ -69,7 +72,7 @@ services:
     ports:
       - 8002:8002
     working_dir: /deploy
-
+    restart: unless-stopped
 networks:
   my_network:
     driver: bridge
