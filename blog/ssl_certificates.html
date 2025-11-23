@@ -44,7 +44,18 @@
 	    then run:
 	    <code class="text-sm bg-gray-200 p-1 rounded">docker run -p 80:80   -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf:ro nginx</code>
     </li>
-    <li>Run <code class="text-sm bg-gray-200 p-1 rounded">./acme.sh --issue -d loic.lescoat.me -d www.loic.lescoat.me -w ~/pub/ --server letsencrypt</code>; replace the <code class="text-sm bg-gray-200 p-1 rounded">-d</code> arguments as required</li>
+    <li>
+	    <ul>
+		    <li>
+			    <span style="font-weight: bold;">To get a new certificate</span>:
+			    Run <code class="text-sm bg-gray-200 p-1 rounded">./acme.sh --issue -d loic.lescoat.me -d www.loic.lescoat.me -w ~/pub/ --server letsencrypt</code>. Replace the <code class="text-sm bg-gray-200 p-1 rounded">-d</code> arguments as required.
+		    </li>
+		    <li>
+			    <span style="font-weight: bold;">To update an existing certificate</span>:
+			    Run <code class="text-sm bg-gray-200 p-1 rounded">acme.sh --renew -d loic.lescoat.me [-d lescoat.me] [--force]</code>.
+		    </li>
+	    </ul>
+    </li>
     <li>Stop HTTP server</li>
     <li>In <code class="text-sm bg-gray-200 p-1 rounded">nginx</code>, pass <code class="text-sm bg-gray-200 p-1 rounded">acme</code>'s <code class="text-sm bg-gray-200 p-1 rounded">full-chain cert</code> (full-chain certificate) to <code class="text-sm bg-gray-200 p-1 rounded">ssl_certificate</code> and the <code class="text-sm bg-gray-200 p-1 rounded">cert key</code> (private key) to <code class="text-sm bg-gray-200 p-1 rounded">ssl_certificate_key</code>:
         <pre class="bg-gray-100 p-4 rounded border mt-2">server {
