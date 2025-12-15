@@ -21,8 +21,6 @@ services:
     networks:
       - my_network
     image: 'postgres:16'
-    ports:
-      - "5432:5432" # makes db visible on network
     environment:
       - POSTGRES_PASSWORD=some_password # NOTE: should have something better
     volumes:
@@ -42,24 +40,9 @@ services:
       - PGPASSWORD=some_password # NOTE: must match above
       - POSTGRES_HOST=linedance_database
       - POSTGRES_USER=postgres
-    ports:
-      - 8001:8001
     working_dir: /deploy
     volumes:
       - linedance-tracker-volume:/deploy/storage
-    restart: unless-stopped
-  thundershare:
-    networks:
-      - my_network
-    build:
-      context: ./thundershare
-      args:
-        PORT: 8000
-    ports:
-      - 8000:8000
-    working_dir: /deploy
-    volumes:
-      - thundershare-volume:/deploy/storage
     restart: unless-stopped
   youtube-to-mp3:
     networks:
@@ -69,8 +52,6 @@ services:
       args:
         PORT: 8002
     container_name: youtube-to-mp3
-    ports:
-      - 8002:8002
     working_dir: /deploy
     restart: unless-stopped
 networks:
