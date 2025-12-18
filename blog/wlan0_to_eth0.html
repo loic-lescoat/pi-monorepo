@@ -11,7 +11,7 @@
 <body class="bg-gray-100 text-gray-800">
 
     <header class="text-center py-6 bg-blue-600 text-white">
-        <h1 class="text-4xl font-bold">Replace wlan0 with eth0</h1>
+        <h1 class="text-4xl font-bold">Raspberry Pi + Ubuntu: Disable Wi-Fi and Enable Ethernet</h1>
     </header>
 
     <main class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
@@ -19,14 +19,12 @@
         <ol class="list-decimal ml-6 space-y-4 text-gray-700">
             <li>Inspect eth0 and wlan0: <code class="text-sm bg-gray-200 p-1 rounded">ifconfig</code>. See wlan0 is RUNNING and eth0 is not.</li>
             <li>Edit <code class="text-sm bg-gray-200 p-1 rounded">/etc/netplan/*.yml</code> to have the following:
-                <pre class="bg-gray-100 p-4 rounded border mt-2">
-network:
+                <pre class="bg-gray-100 p-4 rounded border mt-2">network:
     version: 2
     ethernets:
       renderer: networkd
       eth0:
-        dhcp4: true
-                </pre>
+        dhcp4: true</pre>
             </li>
             <li>Apply: <code class="text-sm bg-gray-200 p-1 rounded">sudo netplan apply</code></li>
             <li>Inspect eth0 and wlan0: <code class="text-sm bg-gray-200 p-1 rounded">ifconfig</code>. See eth0 is RUNNING and wlan0 is not.</li>
