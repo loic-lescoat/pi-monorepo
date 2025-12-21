@@ -6,6 +6,3 @@
 	path = linedance-tracker
 	url = git@github.com:loic-lescoat/linedance-tracker.git
   branch = master
-[submodule "youtube-to-mp3"]
-	path = youtube-to-mp3
-	url = git@github.com:loic-lescoat/youtube-to-mp3.git
