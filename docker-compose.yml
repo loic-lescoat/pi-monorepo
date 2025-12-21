@@ -11,38 +11,9 @@ services:
       - 443:443
     volumes:
       - ./nginx/index.html:/usr/share/nginx/html/index.html
-      - ./blog:/usr/share/nginx/html/blog
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/fullchain.cer:/ssl/fullchain.pem # TODO don't hardcode
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/loic.lescoat.me.key:/ssl/privkey.pem
-    restart: unless-stopped
-  linedance_database:
-    hostname: linedance_database
-    networks:
-      - my_network
-    image: 'postgres:16'
-    environment:
-      - POSTGRES_PASSWORD=some_password # NOTE: should have something better
-    volumes:
-      - linedance_database_data:/var/lib/postgresql/data
-      - ./linedance_database/init.sql:/docker-entrypoint-initdb.d/init.sql
-    restart: unless-stopped
-  linedance-tracker:
-    networks:
-      - my_network
-    build:
-      context: ./linedance-tracker
-      args:
-        PORT: 8001
-    depends_on:
-      - linedance_database
-    environment:
-      - PGPASSWORD=some_password # NOTE: must match above
-      - POSTGRES_HOST=linedance_database
-      - POSTGRES_USER=postgres
-    working_dir: /deploy
-    volumes:
-      - linedance-tracker-volume:/deploy/storage
     restart: unless-stopped
   youtube-to-mp3:
     networks:
@@ -57,11 +28,6 @@ services:
 networks:
   my_network:
     driver: bridge
-
-volumes:
-  thundershare-volume:
-  linedance-tracker-volume:
-  linedance_database_data:
 
 configs:
   nginx_conf:
