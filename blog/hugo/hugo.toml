@@ -1,0 +1,6 @@
+baseURL = 'https://loic.lescoat.me/blog/'
+relativeURLs = true
+canonifyURLs = true
+languageCode = 'en-us'
+title = "Loïc's blog"
+theme = 'ananke'

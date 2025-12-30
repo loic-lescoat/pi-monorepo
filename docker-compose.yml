@@ -3,7 +3,8 @@ services:
   nginx:
     networks:
       - my_network
-    image: nginx:latest
+    build:
+      context: ./blog
     environment:
       - TZ=America/Los_Angeles
     ports:
@@ -11,7 +12,6 @@ services:
       - 443:443
     volumes:
       - ./nginx/index.html:/usr/share/nginx/html/index.html
-      - ./blog:/usr/share/nginx/html/blog
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/fullchain.cer:/ssl/fullchain.pem # TODO don't hardcode
       - /home/loic/.acme.sh/loic.lescoat.me_ecc/loic.lescoat.me.key:/ssl/privkey.pem
@@ -43,16 +43,6 @@ services:
     working_dir: /deploy
     volumes:
       - linedance-tracker-volume:/deploy/storage
-    restart: unless-stopped
-  youtube-to-mp3:
-    networks:
-      - my_network
-    build:
-      context: ./youtube-to-mp3
-      args:
-        PORT: 8002
-    container_name: youtube-to-mp3
-    working_dir: /deploy
     restart: unless-stopped
 networks:
   my_network:

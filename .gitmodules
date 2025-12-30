@@ -6,3 +6,6 @@
 	path = linedance-tracker
 	url = git@github.com:loic-lescoat/linedance-tracker.git
   branch = master
+[submodule "blog/hugo/themes/ananke"]
+	path = blog/hugo/themes/ananke
+	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
