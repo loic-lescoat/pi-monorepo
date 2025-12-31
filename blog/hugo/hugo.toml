@@ -12,18 +12,3 @@ weight = 1
 
 [params]
 disableSpecial1stPost = true
-
-[params.profileMode]
-# NOTE: as next step, could enable this profile mode
-# and implement it at root of website
-enabled = false
-title = "Loïc Lescoat"
-subtitle = "TODO"
-
-[[params.socialIcons]]
-name = "github"
-url = "https://github.com/yourusername"
-
-[[params.socialIcons]]
-name = "linkedin"
-url = "https://www.linkedin.com/in/yourusername/"
