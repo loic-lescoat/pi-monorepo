@@ -1,0 +1,14 @@
+baseURL = 'https://loic.lescoat.me/blog/'
+relativeURLs = false
+canonifyURLs = false
+languageCode = 'en-us'
+title = "Loïc's blog"
+theme = 'papermod'
+
+[[menu.main]]
+name = "Posts"
+url = "/posts/"
+weight = 1
+
+[params]
+disableSpecial1stPost = true
