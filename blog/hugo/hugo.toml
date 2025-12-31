@@ -3,4 +3,4 @@ relativeURLs = true
 canonifyURLs = false
 languageCode = 'en-us'
 title = "Loïc's blog"
-theme = 'ananke'
+theme = 'papermod'
