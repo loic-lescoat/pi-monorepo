@@ -14,7 +14,9 @@ weight = 1
 disableSpecial1stPost = true
 
 [params.profileMode]
-enabled = true
+# NOTE: as next step, could enable this profile mode
+# and implement it at root of website
+enabled = false
 title = "Loïc Lescoat"
 subtitle = "TODO"
 
