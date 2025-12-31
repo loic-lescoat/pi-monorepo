@@ -2,6 +2,7 @@
 date = '2025-01-20T23:25:55+01:00'
 draft = false
 title = "Install Free SSL Certificate Using Let's Encrypt"
+summary = "Prove to visitors your website is legit"
 +++
 
 # Install certificate as seen in [tutorial](https://www.youtube.com/watch?v=XxMbLr4ytCM)
