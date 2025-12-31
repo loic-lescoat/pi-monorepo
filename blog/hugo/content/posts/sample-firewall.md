@@ -3,6 +3,7 @@ date = '2025-12-18T23:25:46+01:00'
 draft = false
 title = 'Sample VPS Firewall Settings'
 summary = "Minimize your Virtual Private Server's attack surface"
+tags = ['website-hosting']
 +++
 
 As said [here](https://askubuntu.com/a/1128560),
