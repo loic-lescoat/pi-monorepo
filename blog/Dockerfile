@@ -1,0 +1,10 @@
+FROM python:3.12.3 AS hugo
+WORKDIR /deploy
+
+RUN pip install hugo==0.153.0
+
+COPY hugo/ .
+RUN hugo --minify
+
+FROM nginx:latest
+COPY --from=hugo /deploy/public /usr/share/nginx/html/blog
