@@ -1,9 +1,9 @@
 ---
-title: "Loïc’s blog"
+title: "Blog"
 description: "Short website-hosting tutorials"
 ---
 
-# Welcome
+## Welcome
 
 This blog contains short website-hosting tutorials.
 
