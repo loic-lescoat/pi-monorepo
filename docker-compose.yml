@@ -44,16 +44,6 @@ services:
     volumes:
       - linedance-tracker-volume:/deploy/storage
     restart: unless-stopped
-  youtube-to-mp3:
-    networks:
-      - my_network
-    build:
-      context: ./youtube-to-mp3
-      args:
-        PORT: 8002
-    container_name: youtube-to-mp3
-    working_dir: /deploy
-    restart: unless-stopped
 networks:
   my_network:
     driver: bridge
