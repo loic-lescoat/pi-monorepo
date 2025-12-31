@@ -1,14 +1,23 @@
-baseURL = 'https://loic.lescoat.me/blog/'
-relativeURLs = false
-canonifyURLs = false
+baseURL = 'https://loic.lescoat.me/'
 languageCode = 'en-us'
-title = "Loïc's blog"
+title = "Loïc's website"
 theme = 'papermod'
-
-[[menu.main]]
-name = "Posts"
-url = "/posts/"
-weight = 1
 
 [params]
 disableSpecial1stPost = true
+
+[params.profileMode]
+enabled = true
+title = "Welcome to my website!"
+
+[[params.profileMode.buttons]]
+name = "Read blog posts"
+url = "/blog/"
+
+[[params.profileMode.buttons]]
+name = "Learn line dances"
+url = "/linedance-tracker/"
+
+[[menu.main]]
+name = "Blog"
+url = "/blog/"
