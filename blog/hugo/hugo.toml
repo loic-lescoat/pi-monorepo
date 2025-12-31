@@ -1,5 +1,5 @@
-baseURL = 'https://loic.lescoat.me/'
-relativeURLs = true
+baseURL = 'https://loic.lescoat.me/blog/'
+relativeURLs = false
 canonifyURLs = false
 languageCode = 'en-us'
 title = "Loïc's blog"
