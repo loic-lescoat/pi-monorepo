@@ -39,6 +39,8 @@ services:
       - PGPASSWORD=some_password # NOTE: must match above
       - POSTGRES_HOST=linedance_database
       - POSTGRES_USER=postgres
+      - GOOGLE_YOUTUBE_API_KEY=${GOOGLE_YOUTUBE_API_KEY:?err}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:?err}
     working_dir: /deploy
     volumes:
       - linedance-tracker-volume:/deploy/storage
