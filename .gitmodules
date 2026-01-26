@@ -1,0 +1,3 @@
+[submodule "thundershare"]
+	path = thundershare
+	url = git@github.com:loic-lescoat/thundershare.git

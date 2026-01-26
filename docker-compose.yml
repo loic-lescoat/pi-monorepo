@@ -1,19 +1,13 @@
 
 services:
   nginx:
-    networks:
-      - my_network
+    network_mode: host
     image: nginx:latest
     environment:
       - TZ=America/Los_Angeles
-    ports:
-      - 80:80
-      - 443:443
     volumes:
       - ./nginx/index.html:/usr/share/nginx/html/index.html
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - /home/loic/.acme.sh/loic.lescoat.me_ecc/fullchain.cer:/ssl/fullchain.pem # TODO don't hardcode
-      - /home/loic/.acme.sh/loic.lescoat.me_ecc/loic.lescoat.me.key:/ssl/privkey.pem
     restart: unless-stopped
   youtube-to-mp3:
     networks:
@@ -22,7 +16,21 @@ services:
       context: ./youtube-to-mp3
       args:
         PORT: 8002
+    ports:
+      - "8002:8002"
     container_name: youtube-to-mp3
+    working_dir: /deploy
+    restart: unless-stopped
+  thundershare:
+    networks:
+      - my_network
+    build:
+      context: ./thundershare
+      args:
+        PORT: 8000
+    ports:
+      - "8000:8000"
+    container_name: thundershare
     working_dir: /deploy
     restart: unless-stopped
 networks:
