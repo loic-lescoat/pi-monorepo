@@ -45,6 +45,16 @@ services:
     volumes:
       - linedance-tracker-volume:/deploy/storage
     restart: unless-stopped
+  privatebin:
+    networks:
+      - my_network
+    image: privatebin/nginx-fpm-alpine:2.0.3
+    environment:
+      - TZ=America/Los_Angeles
+    volumes:
+      - privatebin-data:/srv/data
+      - privatebin-cfg:/srv/cfg
+    restart: unless-stopped
 networks:
   my_network:
     driver: bridge
@@ -53,6 +63,8 @@ volumes:
   thundershare-volume:
   linedance-tracker-volume:
   linedance_database_data:
+  privatebin-data:
+  privatebin-cfg:
 
 configs:
   nginx_conf:
