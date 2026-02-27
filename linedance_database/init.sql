@@ -8,3 +8,5 @@ create table dance_descriptions (id int primary key, description varchar,
   song_artist varchar,
   counts varchar, -- keeping as varchar just in case is not int in all cases
   foreign key (id) references dances(id) on delete cascade);
+
+CREATE EXTENSION pg_trgm; -- used for fuzzy searching of song names
