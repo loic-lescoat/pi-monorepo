@@ -20,6 +20,8 @@ services:
     networks:
       - my_network
     image: 'postgres:16'
+    ports:
+      - '8006:5432'
     environment:
       - POSTGRES_PASSWORD=some_password # NOTE: should have something better
     volumes:
@@ -53,7 +55,7 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - privatebin-data:/srv/data
-      - privatebin-cfg:/srv/cfg
+      - ./privatebin/conf.php:/srv/cfg/conf.php
     restart: unless-stopped
 networks:
   my_network:
