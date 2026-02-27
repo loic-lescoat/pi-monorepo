@@ -20,6 +20,8 @@ services:
     networks:
       - my_network
     image: 'postgres:16'
+    ports:
+      - '8006:5432'
     environment:
       - POSTGRES_PASSWORD=some_password # NOTE: should have something better
     volumes:
