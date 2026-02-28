@@ -4,3 +4,7 @@ psycopg-binary==3.3.3
 psycopg-pool==3.3.0
 segno==1.6.6
 uvicorn==0.41.0
+
+# for analyze.py
+pandas==2.3.3
+matplotlib==3.10.8

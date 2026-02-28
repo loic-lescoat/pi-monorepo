@@ -2,6 +2,11 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+import os
+from fastapi import FastAPI, HTTPException, Depends
+from psycopg_pool import AsyncConnectionPool
+from psycopg.rows import dict_row
+
 app = FastAPI()
 
 # Equivalent to your CORSRequestHandler settings
@@ -12,12 +17,7 @@ app.add_middleware(
     allow_headers=["X-Requested-With", "Content-Type"],
 )
 
-import os
-from fastapi import FastAPI, HTTPException, Depends
-from psycopg_pool import AsyncConnectionPool
-from psycopg.rows import dict_row
 
-app = FastAPI()
 
 # 1. Setup the Connection Pool
 DATABASE_URL = "user=postgres host=localhost password=some_password port=8006"
@@ -40,13 +40,15 @@ async def get_db():
         yield conn
 
 # 3. Updated Logic
-async def get_tutorial_url(conn, song_name: str) -> str:
+async def get_tutorial_url(conn, song_name: str) -> tuple[str, float, str]:
     # We use an async cursor to execute the query
     async with conn.cursor(row_factory=dict_row) as cur:
         await cur.execute(
                 """
                 select
-                    dances.url
+                    dance_descriptions.song_name as best_match,
+                    dances.url,
+                    dance_descriptions.song_name <-> %s as distance
                 FROM
                     dances
                 JOIN
@@ -57,22 +59,22 @@ async def get_tutorial_url(conn, song_name: str) -> str:
                     dance_descriptions.song_name <-> %s
                 limit 1
                 """,
-            (song_name,)
+            (song_name, song_name)
         )
         result = await cur.fetchone()
         
         if not result:
             return None
-        return result["url"]
+        return (result["url"], result['distance'], result['best_match'])
 
 @app.get("/linedance_database/tutorial_url")
 async def tutorial_url(song_name: str, db=Depends(get_db)):
-    url = await get_tutorial_url(db, song_name)
+    url, distance, best_match = await get_tutorial_url(db, song_name)
     
     if url is None:
         raise HTTPException(status_code=404, detail="Dance tutorial not found")
         
-    return {"tutorial_url": url}
+    return {"tutorial_url": url, "distance": distance, "best_match": best_match}
 
 if __name__ == "__main__":
     port = 8005
