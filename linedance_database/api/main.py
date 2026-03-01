@@ -1,18 +1,26 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import HTTPException, Depends, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 import os
-from fastapi import HTTPException, Depends
 from psycopg_pool import AsyncConnectionPool
 from psycopg.rows import dict_row
 
 app = FastAPI()
 
+@app.middleware("http")
+async def log_origin(request: Request, call_next):
+    # This prints the origin header sent by the browser to your console
+    origin = request.headers.get("origin")
+    print(f"\n[CORS DEBUG] Incoming Request Origin: {origin}")
+    response = await call_next(request)
+    return response
+
 # Equivalent to your CORSRequestHandler settings
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    # allow_origins=["http://127.0.0.1:5173"], # NOTE: should do this soon
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["X-Requested-With", "Content-Type"],
 )
