@@ -28,6 +28,21 @@ services:
       - linedance_database_data:/var/lib/postgresql/data
       - ./linedance_database/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
+  linedance_database_api:
+    hostname: linedance_database_api
+    build:
+      context: ./linedance_database/api
+    networks:
+      - my_network
+    environment:
+      - PGHOST=linedance_database
+      - PGUSER=postgres
+      - PGPASSWORD=some_password # NOTE: should have something better
+      - API_PORT=8005
+    volumes:
+      - linedance_database_data:/var/lib/postgresql/data
+      - ./linedance_database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
   linedance-tracker:
     networks:
       - my_network

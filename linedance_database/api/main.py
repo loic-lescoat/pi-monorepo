@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import HTTPException, Depends, FastAPI, Request
+from fastapi import HTTPException, Depends, FastAPI, Request, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 
 import os
@@ -7,6 +7,8 @@ from psycopg_pool import AsyncConnectionPool
 from psycopg.rows import dict_row
 
 app = FastAPI()
+router = APIRouter(prefix="/linedance_database")
+
 
 @app.middleware("http")
 async def log_origin(request: Request, call_next):
@@ -15,6 +17,7 @@ async def log_origin(request: Request, call_next):
     print(f"\n[CORS DEBUG] Incoming Request Origin: {origin}")
     response = await call_next(request)
     return response
+
 
 # Equivalent to your CORSRequestHandler settings
 app.add_middleware(
@@ -27,10 +30,9 @@ app.add_middleware(
 
 
 # 1. Setup the Connection Pool
-DATABASE_URL = "user=postgres host=localhost password=some_password port=8006"
 
 # We initialize the pool outside the request cycle
-pool = AsyncConnectionPool(conninfo=DATABASE_URL, open=False)
+pool = AsyncConnectionPool(open=False)
 
 
 @app.on_event("startup")
@@ -89,8 +91,10 @@ async def tutorial_url(song_name: str, db=Depends(get_db)):
     return {"tutorial_url": url, "distance": distance, "best_match": best_match}
 
 
+app.include_router(router)
+
 if __name__ == "__main__":
-    port = 8005
+    port = int(os.environ["API_PORT"])
     print(f"Serving on port {port} with CORS enabled...")
     uvicorn.run(
         "main:app",
