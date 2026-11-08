@@ -1,0 +1,6 @@
+hugo/.generated/
+hugo/public/
+hugo/resources/
+hugo/.hugo_build.lock
+scripts/__pycache__/
+tests/__pycache__/

@@ -5,6 +5,7 @@ theme = 'papermod'
 
 [params]
 disableSpecial1stPost = true
+mainSections = ['blog']
 
 [params.profileMode]
 enabled = true
@@ -21,3 +22,19 @@ url = "/linedance-tracker/"
 [[menu.main]]
 name = "Blog"
 url = "/blog/"
+
+[[params.profileMode.buttons]]
+name = "Browse recipes"
+url = "/recipes/"
+
+[[menu.main]]
+name = "Recipes"
+url = "/recipes/"
+
+[[module.mounts]]
+source = 'content'
+target = 'content'
+
+[[module.mounts]]
+source = '.generated/recipes'
+target = 'content/recipes'
