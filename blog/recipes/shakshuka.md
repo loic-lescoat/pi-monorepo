@@ -32,4 +32,3 @@ Just writing this recipe makes my mouth water. It’s the combination of the fre
 
 Good harissa certainly has a spicy taste but is also sweet and well balanced. It is a beautiful, brilliant red colour and is not at all bitter. So, if the only harissa you can find in your local supermarket is not up to scratch, make it yourself. To do this, remove the stalks from a handful of mild red chillies and blitz them to a paste with 3 garlic cloves, 1 tsp salt and a pinch of ground coriander. Keep in a jar in the refrigerator, covered with olive oil.
 
-Transcription note: The two water quantities appear in the source instructions but are omitted from its ingredient list; they are included above in order of first use.

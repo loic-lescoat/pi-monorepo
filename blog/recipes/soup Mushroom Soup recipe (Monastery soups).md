@@ -23,6 +23,3 @@
 7. Add cream, bring to a boil and simmer 5 minutes.
 8. Add salt and paprika to taste. Enjoy!
 
-Source: adapted from Twelve Months of Monastery Soups.
-
-Note: The title refers to sour cream, but the ingredients and instructions specify cream. The source reads “Add salt a paprika”; transcribed as “Add salt and paprika.”

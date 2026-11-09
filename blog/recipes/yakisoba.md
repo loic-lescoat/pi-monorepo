@@ -33,4 +33,3 @@ Time: About 30 minutes
 
 Yakisoba is one of those dishes with roots in several countries. Although it’s from Japan, it is Chinese influenced, similar to chow mein and lo mein. However you define it, there are thousands of ways to make yakisoba, many of them good. All contain noodles and vegetables, and usually some protein. The dish is always fried in a pan and finished with a somewhat sweet sauce that is put together quickly, from condiments. All of this provides plenty of leeway.
 
-Note: Water is used in the instructions but is not listed in the source ingredients; its quantity is unspecified.

@@ -31,4 +31,3 @@
 - Bake at only 305 F (150 C): le chocolat n’aime pas le chaud – never, ever go over 325 F (160 C). End baking when inserted knife comes out almost clean – may be less than twenty minutes depending on your oven.
 - In my experience, kids do not like walnuts!
 
-Source note: Walnuts appear in the instructions but not in the source ingredient list; no quantity is given.

@@ -26,4 +26,3 @@
 4. Push the pepper-onion mixture to the side of the pan, add a spoonful of olive oil and then add 450 grams (1 pound) chicken breast. Cook few minutes, turning slices. When the chicken has turned mostly white (it doesn’t have to be fully cooked at this point), combine with peppers. Season with salt, pepper and cumin (or “Mexican spice”). Optional: add the juice of half a lemon. Cook until chicken is fully cooked through.
 5. Serve with warm tortillas, guacamole (avocado, salt, lemon or lime juice, spices), cream, lettuce, tomatoes, etc. Enjoy!
 
-Note: The source reads “warmmtortillas,” rendered here as “warm tortillas.” The source refers to turning chicken slices but does not specify a slicing step.

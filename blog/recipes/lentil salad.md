@@ -26,11 +26,3 @@
 This Mediterranean lentil salad marries sautéed tomatoes, fresh basil and feta with steamed lentils for a hearty, flavorful vegetarian meal that takes less than 20 minutes to prepare!
 
 Prep time: 3 mins. Cook time: 17 mins. Servings: 3.
-
-Course: Lunch/Dinner. Cuisine: Mediterranean. Keyword: lentil salad.
-
-Author: Brittany Mullins. Rating: 4.27 from 23 votes.
-
-Nutrition: Serving: 3/4 cup | Calories: 324 kcal | Carbohydrates: 43g | Protein: 15g | Fat: 13g | Fiber: 12g | Sugar: 15g.
-
-Source note: Brown rice or baby spinach and the extra feta are mentioned in the instructions but have no quantities in the ingredient list.

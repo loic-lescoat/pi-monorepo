@@ -27,7 +27,3 @@
 Serves 6.
 
 Prep Time: 20 minutes. Total Time: 1 hour.
-
-Source: TipHero, https://tiphero.com/braided-apple-walnut-strudel. Recipe adapted from Pepperidge Farm.
-
-Source inconsistencies: The ingredient list calls for raw sugar, while step 7 calls it coarse sugar. The stated total time is 1 hour, while the listed prep, baking, and cooling times add up to 1 hour 15 minutes.

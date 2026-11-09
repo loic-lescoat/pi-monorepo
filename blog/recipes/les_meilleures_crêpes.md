@@ -23,4 +23,3 @@
 8. Ensuite, mettre de l’huile sur du Sopalin et le passer sur la poêle à chaque crêpe.
 9. Quand les bords de la crêpe deviennent bruns et se décollent, la décoller gentiment et la retourner.
 
-Note : l’eau et l’huile sont mentionnées dans les instructions, mais ne figurent pas dans la liste d’ingrédients source ; leurs quantités ne sont pas précisées.

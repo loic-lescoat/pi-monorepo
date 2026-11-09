@@ -23,7 +23,6 @@ Yield: one 10–12-inch pizza
 
 Time: about 1 hour, including a 30-minute rise
 
-Source format note: ingredient quantities with a condensed, rewritten method.
 
 ### Topping ideas preserved from your original file
 
